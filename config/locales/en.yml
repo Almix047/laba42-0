@@ -141,3 +141,6 @@ en:
   accept: "accept"
   delete_project: "Delete"
   your_projects: "Yours projects"
+  created_at: "Created"
+  expires: "Expires"
+  create_comment: "Create"

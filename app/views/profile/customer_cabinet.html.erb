@@ -25,7 +25,7 @@
     </div>
     <div class="customer-relative">
       <%= image_tag("arrow.svg", alt: "arrow", class: "customer__arrow") %>
-      <%= link_to do %>
+      <%= link_to new_project_path do %>
         <%= content_tag :span, image_tag("add.svg", alt: "add", class: "customer__img") + t(:add_task) %>
       <% end %>
     </div>

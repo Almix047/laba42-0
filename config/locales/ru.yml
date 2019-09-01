@@ -135,3 +135,6 @@ ru:
   accept: "принят"
   delete_project: "Удалить"
   your_projects: "Ваши проекты"
+  created_at: "Создано"
+  expires: "Истекает"
+  create_comment: "Создать"
