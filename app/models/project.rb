@@ -30,6 +30,6 @@ class Project < ApplicationRecord
   end
 
   def skills_parse
-    self.skills = skills.split(' ')
+    self.skills = self.skills.split(' ')
   end
 end
