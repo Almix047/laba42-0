@@ -10,6 +10,8 @@ A couple of good words
 
 ## Contribute
 
+Thank you for considering contributing to the laba42! The contribution guide can be found in the Laba42 documentation.
+
 If you'd like to contribute to Laba42, please take the time to go through our short contribution guidelines.
 
 * [Build details](Documentation/CONTRIBUTING.md)
