@@ -9,6 +9,22 @@ Rails.application.routes.draw do
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  # API namespace, for JSON requests at /api/sign_[in|out]
+  namespace :api do
+    devise_for :users, defaults: { format: :json },
+                     class_name: 'ApiUser',
+                           skip: [:registrations, :invitations,
+                                  :passwords, :confirmations,
+                                  :unlocks, :omniauth_callbacks],
+                           path: '',
+                     path_names: { sign_in: 'login',
+                                  sign_out: 'logout' }
+    devise_scope :user do
+      get 'login', to: 'devise/sessions#new'
+      delete 'logout', to: 'devise/sessions#destroy'
+    end
+  end
+
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :users, skip: :omniauth_callbacks, controllers: { confirmations: 'confirmations' }
     root to: 'home#index'
