@@ -9,6 +9,21 @@ Devise.setup do |config|
   app_secret = Rails.application.credentials[:facebook_app_secret]
   config.omniauth :google_oauth2, client_id, client_secret, scope: 'userinfo.email'
   config.omniauth :facebook, app_id, app_secret, scope: 'email'
+
+  config.jwt do |jwt|
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.dispatch_requests = [
+          ['POST', %r{^/api/login$}],
+          ['POST', %r{^/api/login.json$}]
+    ]
+    jwt.revocation_requests = [
+          ['DELETE', %r{^/api/logout$}],
+          ['DELETE', %r{^/api/logout.json$}]
+    ]
+    jwt.expiration_time = 1.day.to_i
+    jwt.request_formats = { api_user: [:json] }
+  end
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
