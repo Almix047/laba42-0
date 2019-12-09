@@ -36,6 +36,12 @@ class User < ApplicationRecord
     end
   end
 
+  before_create :add_jti
+
+  def add_jti
+    self.jti ||= SecureRandom.uuid
+  end
+
   def skills=(args)
     raise 'array expected' unless args.is_a?(Array)
 
