@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       delete 'logout', to: 'devise/sessions#destroy'
     end
 
-    resources :projects
+    namespace :v1 do
+      resources :projects
+    end
 
   end
 
