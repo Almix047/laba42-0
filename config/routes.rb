@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       get 'login', to: 'devise/sessions#new'
       delete 'logout', to: 'devise/sessions#destroy'
     end
+
+    resources :projects
+
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
