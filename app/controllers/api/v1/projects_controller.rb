@@ -8,6 +8,8 @@ class Api::V1::ProjectsController < ApiController
 
   def show
     @project = Project.find(params[:id])
+    @applies = Project.find(params[:id]).applies
+    @comments = Project.find(params[:id]).comments
   end
 
   private
