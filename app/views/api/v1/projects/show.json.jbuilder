@@ -2,7 +2,7 @@ json.id @project.id
 json.title @project.title
 json.owner @project.user.name
 json.info @project.info
-json.skills @project.skills
+json.skills @project.skills.split(',')
 json.created_at @project.created_at
 json.deadline @project.deadline
 json.type @project.project_type
