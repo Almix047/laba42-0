@@ -1,5 +1,6 @@
 
 class Api::V1::ProjectsController < ApiController
+  before_action :authenticate_api_user!
   before_action :set_project
 
   def index
