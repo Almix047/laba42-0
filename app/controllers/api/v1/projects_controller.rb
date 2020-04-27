@@ -39,6 +39,18 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.destroy
+      render json: { status: 200,
+                     response: 'Deleted' }
+    else
+      render json: { status: 422,
+                     response: 'Unprocessable Entity',
+                     message: @project.errors.messages }
+    end
+  end
+
   private
 
   def set_project
