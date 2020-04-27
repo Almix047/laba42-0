@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
-      resources :projects
-      resources :applies
-      resources :comments
+      resources :projects, only: %i[index show create update destroy]
+      resources :applies, only: %i[create destroy]
+      resources :comments, only: %i[create destroy]
     end
 
   end
