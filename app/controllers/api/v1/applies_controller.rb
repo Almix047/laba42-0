@@ -15,6 +15,18 @@ class Api::V1::AppliesController < ApiController
     end
   end
 
+  def destroy
+    @apply = Apply.find(params[:id])
+    if @apply.destroy
+      render json: { status: 200,
+                     response: 'Deleted' }
+    else
+      render json: { status: 422,
+                     response: 'Unprocessable Entity',
+                     message: @apply.errors.messages }
+    end
+  end
+
   private
 
   def apply_params
