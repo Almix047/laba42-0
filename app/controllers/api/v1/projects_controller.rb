@@ -26,6 +26,19 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      render json: { status: 200,
+                     response: 'Updated',
+                     message: @project }
+    else
+      render json: { status: 422,
+                     response: 'Unprocessable Entity',
+                     message: @project.errors.messages }
+    end
+  end
+
   private
 
   def set_project
