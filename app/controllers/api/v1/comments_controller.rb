@@ -15,6 +15,18 @@ class Api::V1::CommentsController < ApiController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      render json: { status: 200,
+                     response: 'Deleted' }
+    else
+      render json: { status: 422,
+                     response: 'Unprocessable Entity',
+                     message: @comment.errors.messages }
+    end
+  end
+
   private
 
   def comment_params
