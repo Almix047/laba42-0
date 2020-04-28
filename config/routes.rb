@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :projects, only: %i[index show create update destroy]
       resources :applies, only: %i[create destroy]
+      post 'applies(/:id)', to: 'applies#appointment'
       resources :comments, only: %i[create destroy]
     end
 

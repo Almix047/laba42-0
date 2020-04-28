@@ -27,6 +27,15 @@ class Api::V1::AppliesController < ApiController
     end
   end
 
+  def appointment
+    Apply.transaction do
+      @apply = Apply.find(params[:id])
+      @apply.project.update!(employee: @apply.user_id)
+      @apply.update!(apply_status: 'accept')
+      render json: { message: "User_id #{@apply.user_id} accepted to Project_id #{@apply.project.id}" }
+    end
+  end
+
   private
 
   def apply_params
